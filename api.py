@@ -5,7 +5,22 @@ import numpy as np
 import pickle
 import heapq
 from datetime import datetime, timedelta
+import os
+import requests
 
+GRAPH_PATH = "apsrtc_directed_time_table_weighted_graph.pkl"
+
+if not os.path.exists(GRAPH_PATH):
+    print("Downloading graph file...")
+
+    url = "https://github.com/Surya8321/apsrtc_api/releases/download/V.10/apsrtc_directed_time_table_weighted_graph.pkl"
+
+    r = requests.get(url)
+
+    with open(GRAPH_PATH, "wb") as f:
+        f.write(r.content)
+
+    print("Graph downloaded successfully!")
 app = FastAPI()
 
 # ============================
