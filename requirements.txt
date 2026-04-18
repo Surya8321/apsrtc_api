@@ -3,3 +3,5 @@ uvicorn
 pandas
 numpy
 pydantic
+networkx
+requests
